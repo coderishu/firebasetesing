@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FIREBASE HOSTING!!</title>
+    <!-- <link rel="manifest" href="./manifest.json"> -->
+</head>
+<body>
+    Hello Firebase Users !!
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAQfFA0dV7tI_fIpnj7dZYhzef4Ci2gDX0",
+    authDomain: "tidy-computing-130701.firebaseapp.com",
+    databaseURL: "https://tidy-computing-130701.firebaseio.com",
+    projectId: "tidy-computing-130701",
+    storageBucket: "tidy-computing-130701.appspot.com",
+    messagingSenderId: "757906834161"
+  };
+  firebase.initializeApp(config);
+  const messaging=firebase.messaging();
+  messaging.requestPermission()
+  .then(function(){
+      console.log("Have permission");
+      return messaging.getToken();
+  })
+  .then(function(token){
+console.log(token);
+  })
+  .catch(function(){
+      console.log("errors")
+  })
+
+  messaging.onMessage(function(payload){
+      console.log('On Message:',payload)
+  });
+
+
+</script>
+</body>
+</html>
